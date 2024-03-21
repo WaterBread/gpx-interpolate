@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<gpx version="1.1" creator="ChatGPT">
+   <trk>
+      <trkseg>
+         <trkpt lat="48.8566" lon="2.3522">
+            <time>2023-12-23T08:00:00Z</time>
+         </trkpt>
+         <trkpt lat="51.5074" lon="-0.1278">
+            <time>2023-12-23T09:00:00Z</time> 
+         </trkpt>
+      </trkseg>
+   </trk>
+</gpx>
