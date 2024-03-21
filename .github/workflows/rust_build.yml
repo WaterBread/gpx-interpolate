@@ -1,19 +1,19 @@
-name: Rust Build
+name: Rust Build and Release
 
 on:
   push:
     branches:
       - main
+    tags:
+      - 'v*'
 
 jobs:
-  build:
-    name: Build Rust Project
+  build_and_release:
+    name: Build and Release
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
 
     - name: Install Rust
       uses: actions-rs/toolchain@v1
@@ -25,8 +25,23 @@ jobs:
     - name: Build
       run: cargo build --release
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: gpx-interpolate
-        path: target/release/gpx-interpolate
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/release/gpx-interpolate
+        asset_name: gpx-interpolate
+        asset_content_type: application/octet-stream
