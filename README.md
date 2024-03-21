@@ -5,7 +5,7 @@ Automatically interpolates points between points in a GPX file.
 ## Usage
 
 ```bash
-gpx-exif-tagger --gpxfile GPXFILE --output OUTPUT
+gpx-interpolate --gpxfile GPXFILE --output OUTPUT
 ```
 
 - `--gpxfile` - The GPX file to interpolate points between.
