@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use crate::modules::gpx::ports::gpx_filepath_port::GPXFilepathPort;
+use crate::ports::gpx_filepath_port::GPXFilepathPort;
 
 pub(crate) struct SmoothGpxTrack<F>
 where
@@ -22,7 +22,7 @@ where
 
         let mut loaded_track = match gpx_track {
             Ok(gpx_track) => gpx_track,
-            Err(e) => panic!("Error loading gpx file: {}", e),
+            Err(_e) => panic!("Error loading gpx file"),
         };
 
         loaded_track.smooth_gpx_track(number_to_insert);

@@ -1,11 +1,9 @@
-use crate::modules::gpx::{
+use crate::{
     adapters::gpx_filepath_adapter::{RawGpxTrack, TrackPoint, TrackPt, TrackSegment},
     domain::gpx_track::{GpxPoint, GpxTrack},
 };
 
-pub fn map_raw_gpx_to_gpx(
-    raw_gpx: crate::modules::gpx::adapters::gpx_filepath_adapter::RawGpxTrack,
-) -> GpxTrack {
+pub fn map_raw_gpx_to_gpx(raw_gpx: crate::adapters::gpx_filepath_adapter::RawGpxTrack) -> GpxTrack {
     let mut segments = Vec::new();
 
     for segment in raw_gpx.track {

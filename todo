@@ -1,0 +1,17 @@
+make a lib folder
+not everything needs to be pub mod
+
+
+https://github.com/WaterBread/gpx-interpolate/blob/9285ac53e10c631478e48396eb2e7acb431b4bf7/src/modules/gpx/ports/gpx_filepath_port.rs#L7
+implement error
+https://docs.rs/thiserror/latest/thiserror/
+dont need "impl fmt::Display", just debug
+
+
+
+Don't use the mappers, use https://doc.rust-lang.org/std/convert/trait.From.html
+https://doc.rust-lang.org/std/convert/trait.TryFrom.html
+
+
+https://github.com/WaterBread/gpx-interpolate/blob/9285ac53e10c631478e48396eb2e7acb431b4bf7/src/modules/gpx/adapters/gpx_filepath_adapter.rs#L67
+anti pattern to take a reference and then clone it

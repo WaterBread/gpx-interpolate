@@ -1,6 +1,7 @@
-use crate::modules::gpx::domain::mappers::gpx_mappers;
-use crate::modules::gpx::ports::gpx_filepath_port::ReadError;
-use crate::modules::gpx::{domain::gpx_track::GpxTrack, ports::gpx_filepath_port::GPXFilepathPort};
+use crate::domain::gpx_track::GpxTrack;
+use crate::domain::mappers::gpx_mappers;
+use crate::ports::gpx_filepath_port::GPXFilepathPort;
+use crate::ports::gpx_filepath_port::ReadError;
 use chrono::{DateTime, Utc};
 use quick_xml::de::from_str;
 use serde::Deserialize;
@@ -68,10 +69,8 @@ impl GPXFilepathPort for GPXFilepathAdapter {
 
         let xml = quick_xml::se::to_string(&raw_gpx);
 
-        // Write to a new file
         match xml {
             Ok(xml) => {
-                // Add the xml header
                 let formatted_xml = format!("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n{}", xml);
                 fs::write(file_path, formatted_xml).expect("Unable to write file");
             }
@@ -82,7 +81,7 @@ impl GPXFilepathPort for GPXFilepathAdapter {
 
 #[cfg(test)]
 mod tests {
-    use crate::modules::gpx::domain::gpx_track::GpxPoint;
+    use crate::domain::gpx_track::GpxPoint;
 
     use super::*;
     use std::path::PathBuf;
@@ -118,7 +117,7 @@ mod tests {
                     Some(0.0)
                 );
             }
-            Err(e) => panic!("Error parsing gpx file: {}", e),
+            Err(e) => panic!("Error parsing gpx file",),
         }
     }
 

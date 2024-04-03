@@ -37,9 +37,7 @@ impl GpxTrack {
                     let fraction = i as f32 / (number_to_insert + 1) as f32;
 
                     let new_lat = start.latitude + fraction * (end.latitude - start.latitude);
-                    println!("new_lat: {}", new_lat);
                     let new_lon = start.longitude + fraction * (end.longitude - start.longitude);
-                    println!("new_lon: {}", new_lon);
 
                     let new_ele = start.elevation + fraction * (end.elevation - start.elevation);
                     let new_time =

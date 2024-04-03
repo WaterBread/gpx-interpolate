@@ -10,5 +10,19 @@ clap = { version = "4.4.11", features = ["derive"] }
 quick-xml = { version = "0.31.0", features = ["serialize"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_derive = "1.0"
+serde_json = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
 tempdir = "0.3.7"
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+geo = "0.17.1"
+geojson = "0.22.2"
+thiserror = "1.0.58"
+smooth_gpx = { path = "./smooth_gpx" }
+
+[workspace]
+
+members = [
+    "map_matching",
+    "smooth_gpx",
+]
